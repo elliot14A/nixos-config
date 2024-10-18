@@ -17,6 +17,7 @@
     ./lspsaga.nix
   ];
 
+
   programs.nixvim.keymaps = [
     {
       action = "<cmd>Lspsaga goto_definition<CR>";

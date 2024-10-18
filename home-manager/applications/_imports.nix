@@ -5,5 +5,6 @@
     ./hypr/_imports.nix
     ./wlogout/wlogout.nix
     ./nixvim/_imports.nix
+    ./zellij.nix
     ];
 }

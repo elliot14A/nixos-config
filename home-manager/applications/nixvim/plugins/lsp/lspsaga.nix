@@ -1,5 +1,8 @@
 {
-  programs.nixvim.plugins.lspsaga = {
+ programs.nixvim.plugins.lspsaga = {
     enable = true;
+    lightbulb = {
+      enable = false;
+    };
   };
 }
