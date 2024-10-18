@@ -1,7 +1,7 @@
 {
     imports = [
         ./files.nix
-        ./nixvim.nix
+        ./default.nix
         ./options.nix
         ./colorscheme.nix
     ];
