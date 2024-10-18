@@ -89,9 +89,7 @@
     description = "elliot";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.fish;
-    packages = with pkgs; [
-    #  thunderbird
-    ];
+    packages =  [];
   };
 
   # Install firefox.
