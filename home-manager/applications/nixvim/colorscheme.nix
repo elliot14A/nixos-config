@@ -1,8 +1,5 @@
 {
-  programs.nixvim.colorschemes.catppuccin = {
-    enable = true;
-    settings = {
-      flavor = "mocha";
+    programs.nixvim.colorschemes.gruvbox = {
+        enable = true;
     };
-  };
 }
