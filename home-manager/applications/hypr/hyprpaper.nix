@@ -1,6 +1,6 @@
 { ... }: 
 let 
-  image = "../../wallpapers/wallpaper.jpg";
+  image = "~/.config/nixos-config/home-manager/wallpapers/wallpaper.jpg";
 in
 {
   services.hyprpaper.enable = true;
