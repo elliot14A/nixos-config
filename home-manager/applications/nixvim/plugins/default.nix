@@ -4,6 +4,7 @@
 
   imports = [
     ./lsp/default.nix
+    ./cmp.nix
     ./fidget.nix
     ./auto-session.nix
     ./autoclose.nix

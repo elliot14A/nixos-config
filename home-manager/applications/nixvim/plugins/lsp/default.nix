@@ -10,8 +10,6 @@
     ./tailwind.nix
     ./typescript.nix
 
-    ./cmp.nix
-
     ./lsp-format.nix
     ./lsp-lines.nix
     ./lsp-signature.nix
