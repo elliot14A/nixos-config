@@ -1,6 +1,6 @@
 { ... }: 
 let 
-  image = "~/Pictures/Wallpapers/wallpaper.jpg";
+  image = "../../wallpapers/wallpaper.jpg";
 in
 {
   services.hyprpaper.enable = true;
