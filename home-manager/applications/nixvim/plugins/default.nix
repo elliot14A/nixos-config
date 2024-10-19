@@ -6,6 +6,7 @@
     ./comment.nix
     ./gitsigns.nix
     ./harpoon.nix
+    ./indent-blankline.nix
   ];
 
   programs.nixvim = {
