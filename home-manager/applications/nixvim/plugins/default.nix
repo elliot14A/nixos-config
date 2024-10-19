@@ -3,11 +3,14 @@
   imports = [
     ./neo-tree.nix
     ./telescope.nix
+    ./comment.nix
   ];
 
   programs.nixvim = {
+
     plugins = {
       # Basic plugin enables
+      web-devicons.enable = true;
       lualine.enable = true;
       gitsigns.enable = true;
       treesitter.enable = true;

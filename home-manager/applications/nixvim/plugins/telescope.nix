@@ -5,17 +5,14 @@
     plugins = {
       telescope = {
         enable = true;
-        # dependencies = [
-        #   "nvim-lua/plenary.nvim"
-        #   "nvim-tree/nvim-web-devicons"
-        #   "nvim-treesitter/nvim-treesitter"
-        # ];
         extensions = {
           fzf-native = {
             enable = true;
-            overrideGenericSorter = true;
-            overrideFileSorter = true;
-            caseMode = "smart_case";
+            settings = {
+                override_generic_sorter = true;
+                override_file_sorter = true;
+                case_mode = "smart_case";
+            };
           };
         };
         defaults = {

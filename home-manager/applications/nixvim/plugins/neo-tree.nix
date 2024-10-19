@@ -16,6 +16,7 @@
             expanderHighlight = "NeoTreeExpander";
           };
         };
+        buffers.followCurrentFile.enabled = true;
         window = {
           width = 30;
           mappings = {
@@ -43,11 +44,6 @@
             "[c" = "prev_git_modified";
             "]c" = "next_git_modified";
           };
-        };
-        filesystem = {
-          followCurrentFile = true;
-          hijackNetrwBehavior = "open_current";
-          useLibuvFileWatcher = true;
         };
       };
     };
