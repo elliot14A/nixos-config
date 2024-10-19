@@ -5,11 +5,11 @@
     plugins = {
       telescope = {
         enable = true;
-        dependencies = [
-          "nvim-lua/plenary.nvim"
-          "nvim-tree/nvim-web-devicons"
-          "nvim-treesitter/nvim-treesitter"
-        ];
+        # dependencies = [
+        #   "nvim-lua/plenary.nvim"
+        #   "nvim-tree/nvim-web-devicons"
+        #   "nvim-treesitter/nvim-treesitter"
+        # ];
         extensions = {
           fzf-native = {
             enable = true;

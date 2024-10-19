@@ -1,7 +1,7 @@
 # modules/plugins/init.nix
 {
   imports = [
-    ./nvim-tree.nix
+    ./neo-tree.nix
     ./telescope.nix
   ];
 
