@@ -4,7 +4,8 @@
     ./neo-tree.nix
     ./telescope.nix
     ./comment.nix
-    ./gisigns.nix
+    ./gitsigns.nix
+    ./harpoon.nix
   ];
 
   programs.nixvim = {
