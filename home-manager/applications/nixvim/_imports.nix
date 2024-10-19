@@ -1,9 +1,8 @@
 {
     imports = [
-        ./files.nix
+        ./colorscheme.nix
         ./default.nix
         ./options.nix
-        ./colorscheme.nix
         ./plugins/default.nix
     ];
 }

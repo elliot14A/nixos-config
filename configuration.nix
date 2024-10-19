@@ -74,9 +74,9 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
     jack.enable = true;
   };
+  services.pipewire.wireplumber.enable = true;
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
@@ -112,6 +112,6 @@
 
   programs.dconf.enable = true;
 
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.05"; 
 
 }

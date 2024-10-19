@@ -31,9 +31,14 @@
     "Alt SHIFT, Tab, hy3:movefocus, left"
 
     # Screenshots
-    ''
-      $mod SHIFT, S, exec, grimshot savecopy area "/home/elliot/Pictures/Screenshots/$(date).png"''
-    # "$mod, Tab, workspace, previous"
+    ''$mod SHIFT, S, exec, grimshot savecopy area "/home/elliot/Pictures/Screenshots/$(date).png"''
+
+    ", XF86AudioRaiseVolume, exec, pamixer -i 5"
+    ", XF86AudioLowerVolume, exec, pamixer -d 5"
+    ", XF86AudioMute, exec, pamixer -t"
+    ", XF86AudioPlay, exec, playerctl play-pause"
+    ", XF86AudioNext, exec, playerctl next"
+    ", XF86AudioPrev, exec, playerctl previous"
 
     "$mod, Tab, overview:toggle" # REQUIRES Hyprspace PLUGIN
     "$mod, Escape, hyprexpo:expo, toggle" # REQUIRES hyprexpo PLUGIN

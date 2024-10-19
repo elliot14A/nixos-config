@@ -24,6 +24,7 @@
     pkgs.blueman
     pkgs.polkit-kde-agent
     pkgs.gcc
+    pkgs.playerctl
 
     pkgs.fish
     pkgs.starship
@@ -62,9 +63,16 @@
     pkgs.lld
     pkgs.nixd
     pkgs.nodejs
+    pkgs.go
 
     # Fonts
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+
+    (pkgs.google-cloud-sdk.withExtraComponents [
+      pkgs.google-cloud-sdk.components.cloud-build-local
+      pkgs.google-cloud-sdk.components.gke-gcloud-auth-plugin
+      pkgs.google-cloud-sdk.components.kubectl
+    ])
   ];
 
   programs.home-manager.enable = true;
