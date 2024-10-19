@@ -15,7 +15,7 @@
             };
           };
         };
-        defaults = {
+        settings.defaults = {
           fileIgnorePatterns = [ "^.git/" "/%.git/" ];
           promptPrefix = "🔍 ";
           selectionCaret = "➤ ";

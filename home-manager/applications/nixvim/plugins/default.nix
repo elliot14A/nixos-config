@@ -4,6 +4,7 @@
     ./neo-tree.nix
     ./telescope.nix
     ./comment.nix
+    ./gisigns.nix
   ];
 
   programs.nixvim = {
@@ -12,7 +13,6 @@
       # Basic plugin enables
       web-devicons.enable = true;
       lualine.enable = true;
-      gitsigns.enable = true;
       treesitter.enable = true;
 
       # LSP
