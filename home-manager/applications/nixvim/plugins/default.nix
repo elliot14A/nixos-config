@@ -2,12 +2,12 @@
 {
   imports = [
     ./nvim-tree.nix
+    ./telescope.nix
   ];
 
   programs.nixvim = {
     plugins = {
       # Basic plugin enables
-      telescope.enable = true;
       lualine.enable = true;
       gitsigns.enable = true;
       treesitter.enable = true;
