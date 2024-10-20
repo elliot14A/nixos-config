@@ -11,6 +11,7 @@
     ./none-ls.nix
     ./notify.nix
     ./nvim-ufo.nix
+    ./which-key.nix
   ];
 
   programs.nixvim = {
@@ -21,7 +22,6 @@
       lualine.enable = true;
       treesitter.enable = true;
       markdown-preview.enable = true;
-      which-key.enable = true;
 
     };
   };

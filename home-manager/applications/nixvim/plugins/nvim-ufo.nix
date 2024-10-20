@@ -37,15 +37,6 @@
         };
       };
 
-      which-key = {
-        registrations = {
-          "zR" = { action = "__raw: function() require('ufo').openAllFolds() end", description = "Open all folds" };
-          "zM" = { action = "__raw: function() require('ufo').closeAllFolds() end", description = "Close all folds" };
-          "zr" = { action = "__raw: function() require('ufo').openFoldsExceptKinds() end", description = "Fold less" };
-          "zm" = { action = "__raw: function() require('ufo').closeFoldsWith() end", description = "Fold more" };
-          "zp" = { action = "__raw: function() require('ufo').peekFoldedLinesUnderCursor() end", description = "Peek fold" };
-        };
-      };
 
       lsp = {
         onAttach = ''
