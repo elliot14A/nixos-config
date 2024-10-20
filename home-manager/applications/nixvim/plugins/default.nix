@@ -8,6 +8,7 @@
     ./harpoon.nix
     ./indent-blankline.nix
     ./lsp.nix
+    ./none-ls.nix
   ];
 
   programs.nixvim = {
@@ -17,6 +18,7 @@
       web-devicons.enable = true;
       lualine.enable = true;
       treesitter.enable = true;
+      markdown-preview = true;
 
     };
   };

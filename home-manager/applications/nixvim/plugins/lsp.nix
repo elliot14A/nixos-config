@@ -9,9 +9,8 @@
       enable = true;
     };
 
-    neoconf = {
+    lsp-kind = {
       enable = true;
     };
-
   };
 }
