@@ -9,6 +9,7 @@
     ./indent-blankline.nix
     ./lsp.nix
     ./none-ls.nix
+    ./notify.nix
   ];
 
   programs.nixvim = {
@@ -18,7 +19,7 @@
       web-devicons.enable = true;
       lualine.enable = true;
       treesitter.enable = true;
-      markdown-preview = true;
+      markdown-preview.enable = true;
 
     };
   };

@@ -9,7 +9,7 @@
       enable = true;
     };
 
-    lsp-kind = {
+    lspkind = {
       enable = true;
     };
   };
