@@ -7,7 +7,7 @@
     ./gitsigns.nix
     ./harpoon.nix
     ./indent-blankline.nix
-    ./lspconfig.nix
+    ./lsp.nix
   ];
 
   programs.nixvim = {

@@ -2,22 +2,14 @@
   programs.nixvim.plugins = {
     lsp = {
       enable = true;
-      servers = {
-        rust-analyzer
-        gopls
-        go-imports
-      };
+      servers = {};
     };
 
     lsp-lines = {
-      enable = true
-    };
-
-    neoconf = {
       enable = true;
     };
 
-    lspconfig = {
+    neoconf = {
       enable = true;
     };
 
