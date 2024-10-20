@@ -1,6 +1,7 @@
 # modules/plugins/init.nix
 {
   imports = [
+    ./auto-session.nix
     ./neo-tree.nix
     ./telescope.nix
     ./comment.nix

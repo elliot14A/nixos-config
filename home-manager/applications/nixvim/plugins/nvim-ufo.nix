@@ -3,7 +3,7 @@
   programs.nixvim = {
 
     plugins = {
-      ufo = {
+      nvim-ufo = {
         enable = true;
         settings = {
           preview = {
