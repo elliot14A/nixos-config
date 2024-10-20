@@ -1,5 +1,4 @@
 # modules/plugins/telescope.nix
-{ ... }:
 {
   programs.nixvim = {
     plugins = {
