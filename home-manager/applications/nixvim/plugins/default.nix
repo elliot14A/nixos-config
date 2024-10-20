@@ -10,6 +10,7 @@
     ./lsp.nix
     ./none-ls.nix
     ./notify.nix
+    ./nvim-ufo.nix
   ];
 
   programs.nixvim = {
@@ -20,6 +21,7 @@
       lualine.enable = true;
       treesitter.enable = true;
       markdown-preview.enable = true;
+      which-key.enable = true;
 
     };
   };
