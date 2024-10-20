@@ -6,32 +6,28 @@
         char = "▏";
         };
         scope = {
-        showStart = false;
-        showEnd = false;
+          enabled = true;
+          show_start = false;
+          show_end = false;
         };
         exclude = {
         buftypes = [
-            "nofile"
-            "prompt"
-            "quickfix"
-            "terminal"
+          "nofile"
+          "prompt"
+          "quickfix"
+          "terminal"
         ];
         filetypes = [
-            "dashboard"
-            "help"
-            "neo-tree"
-            "neogitstatus"
-            "notify"
-            "startify"
-            "toggleterm"
-            "Trouble"
+          "dashboard"
+          "help"
+          "neo-tree"
+          "neogitstatus"
+          "notify"
+          "startify"
+          "toggleterm"
+          "Trouble"
         ];
-        };
+      };
     };
-        maps.normal."<leader>u|" = {
-            action = "<cmd>IBLToggle<cr>";
-            desc = "Toggle indent guides";
-        };
-    };
-
+  };
 }

@@ -7,6 +7,7 @@
     ./gitsigns.nix
     ./harpoon.nix
     ./indent-blankline.nix
+    ./lspconfig.nix
   ];
 
   programs.nixvim = {
@@ -17,13 +18,6 @@
       lualine.enable = true;
       treesitter.enable = true;
 
-      # LSP
-      lsp = {
-        enable = true;
-        servers = {
-          # We'll add language servers here
-        };
-      };
     };
   };
 }
