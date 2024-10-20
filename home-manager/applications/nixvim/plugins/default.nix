@@ -13,17 +13,20 @@
     ./notify.nix
     ./nvim-ufo.nix
     ./which-key.nix
-    ./todo-comments.nix
+    ./bufferline.nix
   ];
 
   programs.nixvim = {
     plugins = {
-      # Basic plugin enables
       web-devicons.enable = true;
       lualine.enable = true;
       treesitter.enable = true;
       markdown-preview.enable = true;
       smart-splits.enable = true;
+      todo-comments.enable = true;
+      ts-autotag.enable = true;
+      ts-context-commentstring.enable = true;
+      illuminate.enable = true;
     };
   };
 }

@@ -16,6 +16,11 @@
             }
             {
                 mode = "n";
+                key = "yy";
+                action = "yy";
+            }
+            {
+                mode = "n";
                 key = "<C-j>";
                 action = "<C-w>j";
             }
@@ -99,6 +104,21 @@
                 key = "K";
                 action = ":move '<-2<CR>gv-gv";
             }
+            # {
+            #     key = "]T";
+            #     mode = "n";
+            #     action = "todo-comments.jump_next";
+            # }
+            # {
+            #     mode = "n";
+            #     key = "[T";
+            #     action = "todo-comments.jump_prev";
+            # }
+            # {
+            #     mode = "n";
+            #     key = "<leader>fT";
+            #     action = "TodoTelescope";
+            # }
         ];
     };
 
