@@ -8,9 +8,9 @@
           fzf-native = {
             enable = true;
             settings = {
-                override_generic_sorter = true;
-                override_file_sorter = true;
-                case_mode = "smart_case";
+              override_generic_sorter = true;
+              override_file_sorter = true;
+              case_mode = "smart_case";
             };
           };
         };
@@ -43,6 +43,7 @@
     extraConfigLua = ''
       local telescope = require('telescope')
       local actions = require('telescope.actions')
+      local builtin = require('telescope.builtin')
 
       telescope.setup({
         defaults = {
@@ -51,6 +52,8 @@
               ["<C-j>"] = actions.move_selection_next,
               ["<C-k>"] = actions.move_selection_previous,
               ["<CR>"] = actions.select_default + actions.center,
+              ["<C-x>"] = actions.select_horizontal,
+              ["<C-v>"] = actions.select_vertical,
             },
             n = {
               ["q"] = actions.close,
@@ -58,6 +61,21 @@
           },
         },
       })
+
+      -- Functions to open files in split mode
+      _G.find_files_in_split = function()
+        builtin.find_files({ attach_mappings = function(_, map)
+          map('i', '<CR>', actions.select_horizontal)
+          return true
+        end})
+      end
+
+      _G.find_files_in_vsplit = function()
+        builtin.find_files({ attach_mappings = function(_, map)
+          map('i', '<CR>', actions.select_vertical)
+          return true
+        end})
+      end
     '';
 
     # Telescope specific keymaps
@@ -159,6 +177,24 @@
         options = {
           silent = true;
           desc = "Find words in current buffer";
+        };
+      }
+      {
+        mode = "n";
+        key = "<leader>fs";
+        action = ":lua find_files_in_split()<CR>";
+        options = {
+          silent = true;
+          desc = "Find files (split mode)";
+        };
+      }
+      {
+        mode = "n";
+        key = "<leader>fvs";
+        action = ":lua find_files_in_vsplit()<CR>";
+        options = {
+          silent = true;
+          desc = "Find files (vertical split mode)";
         };
       }
     ];

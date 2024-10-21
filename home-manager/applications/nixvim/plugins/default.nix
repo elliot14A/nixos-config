@@ -14,19 +14,19 @@
     ./nvim-ufo.nix
     ./which-key.nix
     ./bufferline.nix
+    ./cmp.nix
+    ./lua_line.nix
   ];
 
   programs.nixvim = {
     plugins = {
       web-devicons.enable = true;
-      lualine.enable = true;
       treesitter.enable = true;
-      markdown-preview.enable = true;
-      smart-splits.enable = true;
       todo-comments.enable = true;
       ts-autotag.enable = true;
       ts-context-commentstring.enable = true;
       illuminate.enable = true;
+      autoclose.enable = true;
     };
   };
 }

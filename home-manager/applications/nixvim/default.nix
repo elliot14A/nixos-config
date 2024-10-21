@@ -119,7 +119,117 @@
             #     key = "<leader>fT";
             #     action = "TodoTelescope";
             # }
-        ];
+            {
+              mode = "n";
+              key = "<leader>bn";
+              action = ":bnext<CR>";
+              options = {
+                silent = true;
+                desc = "Next buffer";
+              };
+            }
+            {
+              mode = "n";
+              key = "<leader>bp";
+              action = ":bprevious<CR>";
+              options = {
+                silent = true;
+                desc = "Previous buffer";
+              };
+            }
+            {
+              mode = "n";
+              key = "<leader>bd";
+              action = ":bdelete<CR>";
+              options = {
+                silent = true;
+                desc = "Delete current buffer";
+              };
+            }
+          # Move buffer to right split
+            {
+              mode = "n";
+              key = "<leader>ml";
+              action = "<C-w>L";
+              options = {
+                silent = true;
+                desc = "Move current buffer to right split";
+              };
+            }
+            # Move buffer to top split
+            {
+              mode = "n";
+              key = "<leader>mk";
+              action = "<C-w>K";
+              options = {
+                silent = true;
+                desc = "Move current buffer to top split";
+              };
+            }
+            # Move buffer to bottom split
+            {
+              mode = "n";
+              key = "<leader>mj";
+              action = "<C-w>J";
+              options = {
+                silent = true;
+                desc = "Move current buffer to bottom split";
+              };
+            }
+            # Rotate splits
+            {
+              mode = "n";
+              key = "<leader>mr";
+              action = "<C-w>r";
+              options = {
+                silent = true;
+                desc = "Rotate splits clockwise";
+              };
+            }
+            # Rotate splits (reverse)
+            {
+              mode = "n";
+              key = "<leader>mR";
+              action = "<C-w>R";
+              options = {
+                silent = true;
+                desc = "Rotate splits counter-clockwise";
+              };
+            }
+            {
+              mode = "n";
+              key = "<Esc>";
+              action = ":noh<CR><Esc>";
+              options = {
+                silent = true;
+                desc = "Clear search highlighting";
+              };
+            }
+            {
+              key = "<leader>bo";
+              mode = "n";
+              action = ":%bdelete|e#|bdelete#<CR>";
+              options = {
+                silent = true;
+                desc = "Close all buffers except current";
+            };
+      }
+      ];
+
+      extraConfigLua = ''
+        -- Function to swap buffers between two splits
+        function SwapBuffers()
+          local current_buf = vim.fn.bufnr('%')
+          vim.cmd('wincmd w')  -- Move to the next window
+          local target_buf = vim.fn.bufnr('%')
+          vim.cmd('buffer ' .. current_buf)
+          vim.cmd('wincmd w')  -- Move back to the original window
+          vim.cmd('buffer ' .. target_buf)
+        end
+
+        -- Set up a keymap to use this function
+        vim.api.nvim_set_keymap('n', '<leader>ms', ':lua SwapBuffers()<CR>', {noremap = true, silent = true})
+    '';
     };
 
 }

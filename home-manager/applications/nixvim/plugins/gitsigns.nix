@@ -8,6 +8,7 @@
                     virt_text = true;
                     virt_text_pos = "eol";
                 };
+                signcolumn = true;
             };
         };
     };
