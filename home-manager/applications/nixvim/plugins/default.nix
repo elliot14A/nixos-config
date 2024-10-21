@@ -15,7 +15,7 @@
     ./which-key.nix
     ./bufferline.nix
     ./cmp.nix
-    ./lua_line.nix
+    ./feline.nix
   ];
 
   programs.nixvim = {
@@ -27,6 +27,7 @@
       ts-context-commentstring.enable = true;
       illuminate.enable = true;
       autoclose.enable = true;
+      flash.enable = true;
     };
   };
 }
