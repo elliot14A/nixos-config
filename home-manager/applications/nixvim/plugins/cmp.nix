@@ -4,21 +4,18 @@
       cmp = {
         enable = true;
         settings = {
-          sources = [
-            { name = "nvim_lsp"; }
-            { name = "luasnip"; }
-            { name = "buffer"; }
-            { name = "path"; }
-          ];
-          snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
+          snippet.expand = ''
+            function(args)
+              require('luasnip').lsp_expand(args.body)
+            end
+          '';
           mapping = {
-            "<C-Space>" = "cmp.mapping.complete()";
-            "<C-e>" = "cmp.mapping.close()";
-            "<CR>" = "cmp.mapping.confirm({ select = true })";
-            "<Tab>" = {
-              modes = [ "i" "s" ];
-              action = ''
-                function(fallback)
+            __raw = ''
+              cmp.mapping.preset.insert({
+                ['<C-Space>'] = cmp.mapping.complete(),
+                ['<C-e>'] = cmp.mapping.abort(),
+                ['<CR>'] = cmp.mapping.confirm({ select = true }),
+                ['<Tab>'] = cmp.mapping(function(fallback)
                   if cmp.visible() then
                     cmp.select_next_item()
                   elseif luasnip.expandable() then
@@ -28,13 +25,8 @@
                   else
                     fallback()
                   end
-                end
-              '';
-            };
-            "<S-Tab>" = {
-              modes = [ "i" "s" ];
-              action = ''
-                function(fallback)
+                end, { 'i', 's' }),
+                ['<S-Tab>'] = cmp.mapping(function(fallback)
                   if cmp.visible() then
                     cmp.select_prev_item()
                   elseif luasnip.jumpable(-1) then
@@ -42,13 +34,31 @@
                   else
                     fallback()
                   end
-                end
-              '';
-            };
+                end, { 'i', 's' }),
+              })
+            '';
           };
+          sources = [
+            { name = "nvim_lsp"; }
+            { name = "luasnip"; }
+            { name = "buffer"; }
+            { name = "path"; }
+          ];
         };
       };
       luasnip.enable = true;
+      lsp = {
+        enable = true;
+        servers = {
+          # Add the LSP servers you need here, for example:
+          # rust-analyzer.enable = true;
+          # pyright.enable = true;
+        };
+      };
     };
+    extraConfigLua = ''
+      local cmp = require('cmp')
+      local luasnip = require('luasnip')
+    '';
   };
 }

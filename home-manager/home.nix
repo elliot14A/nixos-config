@@ -25,6 +25,7 @@
     pkgs.polkit-kde-agent
     pkgs.gcc
     pkgs.playerctl
+    pkgs.k9s
 
     pkgs.fish
     pkgs.starship
@@ -73,6 +74,14 @@
       pkgs.google-cloud-sdk.components.gke-gcloud-auth-plugin
       pkgs.google-cloud-sdk.components.kubectl
     ])
+
+    (
+      pkgs.python3.withPackages(ps: with ps; [
+        pip
+        setuptools
+      ])
+    )
+
   ];
 
   programs.home-manager.enable = true;

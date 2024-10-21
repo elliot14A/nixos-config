@@ -28,8 +28,8 @@
         silent = true;
         diagnostic = {
           # Navigate between diagnostic messages
-          "<leader>j" = "goto_next";
-          "<leader>k" = "goto_prev";
+          "<leader>lj" = "goto_next";
+          "<leader>lk" = "goto_prev";
         };
         lspBuf = {
           # Go to definition
@@ -52,23 +52,12 @@
           "<leader>ds" = "document_symbol";
           # Show workspace symbols
           "<leader>ws" = "workspace_symbol";
+        };
       };
     };
-    };
 
-    lsp-lines = {
-      enable = true;
-    };
-
-    lspkind = {
-      enable = true;
-    };
-    trouble = {
-      enable = true;
-      settings = {
-        indent_lines = true;
-        use_diagnostic_signs = true;
-      };
-    };
+    lsp-lines.enable = true; 
+    lspkind.enable = true; 
+    trouble.enable = true;
   };
 }
