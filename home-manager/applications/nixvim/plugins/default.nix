@@ -15,7 +15,7 @@
     ./which-key.nix
     ./bufferline.nix
     ./cmp.nix
-    ./feline.nix
+    ./lightline.nix
   ];
 
   programs.nixvim = {
