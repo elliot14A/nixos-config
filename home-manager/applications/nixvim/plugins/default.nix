@@ -16,6 +16,7 @@
     ./bufferline.nix
     ./cmp.nix
     ./treesitter.nix
+    ./flash.nix
   ];
 
   programs.nixvim = {

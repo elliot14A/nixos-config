@@ -1,5 +1,5 @@
 {
- programs.nixvim.plugings.treesitter = {
+ programs.nixvim.plugins.treesitter = {
    enable = true;
    settings = {
      auto_install = false;
