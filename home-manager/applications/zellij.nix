@@ -7,7 +7,7 @@
     on_force_close "detach"
 
 
-    pane_frames true
+    pane_frames false
 
     theme "gruvbox-dark"
 
