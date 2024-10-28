@@ -1,6 +1,4 @@
 # modules/plugins/neo-tree.nix
-{ ... }:
-
 {
   programs.nixvim = {
     plugins = {
@@ -11,8 +9,6 @@
         defaultComponentConfigs = {
           indent = {
             withExpanders = true;
-            expanderCollapsed = "";
-            expanderExpanded = "";
             expanderHighlight = "NeoTreeExpander";
           };
         };

@@ -24,8 +24,10 @@
     pkgs.blueman
     pkgs.polkit-kde-agent
     pkgs.gcc
+    pkgs.libreoffice
     pkgs.playerctl
     pkgs.k9s
+    pkgs.cmake
 
     pkgs.fish
     pkgs.starship

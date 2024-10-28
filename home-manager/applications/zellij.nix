@@ -17,7 +17,7 @@
 
     copy_on_select true
 
-    scrollback_editor "/usr/bin/nvim"
+    scrollback_editor "nvim"
 
     keybinds {
         unbind "Ctrl q"

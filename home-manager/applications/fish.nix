@@ -1,4 +1,3 @@
-{ ... }: 
 {
   programs.starship.enable = true;
   programs.fish = {
@@ -7,7 +6,7 @@
       starship init fish | source 
     '';
     shellAliases = {
-      z = "zellij"
+      z = "zellij";
     };
   };
 }
