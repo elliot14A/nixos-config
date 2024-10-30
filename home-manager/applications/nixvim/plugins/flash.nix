@@ -2,18 +2,6 @@
   programs.nixvim = {
     plugins.flash = {
       enable = true;
-      modes = {
-        char = {
-          enabled = true;
-          # Configuration for character search mode
-          highlight.backdrop = false;
-        };
-        search = {
-          enabled = true;
-          # Configuration for search mode
-          wrap = true;  # Whether to wrap around the buffer
-        };
-      };
     };
 
     # Add keymaps for flash
