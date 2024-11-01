@@ -10,8 +10,8 @@
      swapfile = false;
      backup = false;
      undofile = true;
-     hlsearch = true;
-     incsearch = true;
+     # hlsearch = true;
+     # incsearch = true;
      hidden = true;
      termguicolors = true;
      scrolloff = 8;
@@ -27,7 +27,7 @@
         "winsize"
         "winpos"
         "terminal"
-        "localoptions"  # Add this line
+        "localoptions"  
       ];
   };
 }

@@ -4,5 +4,6 @@
         ./default.nix
         ./options.nix
         ./plugins/default.nix
+        ./files.nix
     ];
 }

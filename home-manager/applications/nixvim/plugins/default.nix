@@ -7,7 +7,7 @@
     ./comment.nix
     ./gitsigns.nix
     ./harpoon.nix
-    ./indent-blankline.nix
+    # ./indent-blankline.nix
     ./lsp.nix
     ./none-ls.nix
     ./notify.nix
@@ -17,6 +17,7 @@
     ./cmp.nix
     ./treesitter.nix
     ./flash.nix
+    ./lspconfig.lua
   ];
 
   programs.nixvim = {
@@ -29,6 +30,12 @@
       autoclose.enable = true;
       lualine.enable = true;
       fidget.enable = true;
+      guess-indent = {
+          enable = true;
+          settings = {
+              override_editorconfig = true;
+          };
+      };
     };
          # Add custom Lua configuration
   extraConfigLua = ''
