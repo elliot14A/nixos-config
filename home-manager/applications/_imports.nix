@@ -6,5 +6,6 @@
     ./wlogout/wlogout.nix
     ./nixvim/_imports.nix
     ./zellij.nix
+    ./nushell.nix
     ];
 }

@@ -7,6 +7,54 @@
           enable = true;
           installRustc = false;
           installCargo = false;
+          extraOptions = {
+            settings = {
+              "rust=analyzer" = {
+                checkOnSave = {
+                  command = "clippy";
+                  allFeatures = true;
+                };
+                procMacro = {
+                  enable = true;
+                };
+                hover = {
+                    actions = {
+                      enable = true;
+                      debug = true;
+                      gotoTypeDef = true;
+                      implementations = true;
+                    };
+                  };
+                  # Inline hints
+                  inlayHints = {
+                    bindingModeHints = {
+                      enable = true;
+                    };
+                    closureReturnTypeHints = {
+                      enable = true;
+                    };
+                    parameterHints = {
+                      enable = true;
+                    };
+                    typeHints = {
+                      enable = true;
+                    };
+                };
+              };
+            };
+          };
+        };
+        nixd = {
+          enable = true;
+          extraOptions = {
+            settings = {
+              nixd = {
+                formatting = {
+                  command = "nixpkgs-fmt";
+                };
+              };
+            };
+          };
         };
         gopls = {
           enable = true;

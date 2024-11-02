@@ -1,7 +1,7 @@
 # modules/plugins/init.nix
 {
   imports = [
-    ./auto-session.nix
+    # ./auto-session.nix
     ./neo-tree.nix
     ./telescope.nix
     ./comment.nix
@@ -17,7 +17,6 @@
     ./cmp.nix
     ./treesitter.nix
     ./flash.nix
-    ./lspconfig.lua
   ];
 
   programs.nixvim = {

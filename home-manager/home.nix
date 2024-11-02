@@ -27,11 +27,7 @@
     pkgs.libreoffice
     pkgs.playerctl
     pkgs.k9s
-    pkgs.cmake
-
-    pkgs.fish
-    pkgs.starship
-    pkgs.fzf
+    pkgs.postman
 
     pkgs.git
 
@@ -51,7 +47,6 @@
     pkgs.tree
     pkgs.libGL
     pkgs.libGLU
-    pkgs.eza
     inputs.zen-browser.packages."${pkgs.system}".specific
     pkgs.lazygit
     pkgs.lazydocker
@@ -69,7 +64,7 @@
     pkgs.go
 
     # Fonts
-    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
 
     (pkgs.google-cloud-sdk.withExtraComponents [
       pkgs.google-cloud-sdk.components.cloud-build-local

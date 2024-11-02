@@ -54,6 +54,16 @@
     theme = "where_is_my_sddm_theme";
   };
 
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";  # For Electron apps
+    WLR_NO_HARDWARE_CURSORS = "1";  # Fix cursor issues on NVIDIA
+    LIBVA_DRIVER_NAME = "nvidia";
+    XDG_SESSION_TYPE = "wayland";
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    WLR_RENDERER = "vulkan";
+  };
+
   services.displayManager.defaultSession = "hyprland";
   # services.displayManager.defaultSession = "gnome";
 
@@ -83,20 +93,40 @@
   # Enable Flatpak
   services.flatpak.enable = true;
 
-  programs.fish.enable = true;
   users.users.elliot = {
     isNormalUser = true;
     description = "elliot";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    shell = pkgs.fish;
+    shell = pkgs.nushell;
     packages =  [];
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  services.logind = {
+    lidSwitch = "suspend";
+    extraConfig = ''
+      HandlePowerKey=suspend
+      IdleAction=suspend
+      IdleActionSec=30min
+    '';
+  };
+
+ systemd.sleep.extraConfig = ''
+    AllowSuspend=yes
+    SuspendState=mem
+  '';
+
+  systemd.services.nvidia-suspend = {
+    description = "NVIDIA suspend preparation";
+    before = [ "systemd-suspend.service" ];
+    script = ''
+      ${pkgs.linuxPackages.nvidia_x11.bin}/bin/nvidia-smi -pm 1
+    '';
+    serviceConfig.Type = "oneshot";
+    wantedBy = [ "systemd-suspend.service" ];
+  };
 
   environment.systemPackages = with pkgs; [
     neovim
@@ -108,6 +138,20 @@
     cudaPackages.cudatoolkit
     where-is-my-sddm-theme
     sbctl
+    vulkan-tools
+    vulkan-headers
+    libva
+    libva-utils
+    powertop
+    acpi
+    tlp
+    nushell
+    bat
+    eza
+    fd
+    ripgrep
+    starship
+    fzf
   ];
 
   programs.dconf.enable = true;
