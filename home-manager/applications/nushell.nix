@@ -1,5 +1,3 @@
-{  pkgs, ... }:
-
 {
   programs.nushell = {
     enable = true;
@@ -22,13 +20,11 @@
       ".." = "cd ..";
       "..." = "cd ../..";
       home = "cd ~";
+      z = "zellij";
+      za = "zellij attach";
+      znew = "zellij session";
+      cat = "bat";
 
-      # Git shortcuts
-      gs = "git status";
-      ga = "git add";
-      gc = "git commit";
-      gp = "git push";
-      gl = "git log --oneline";
     };
 
     extraConfig = ''
@@ -77,7 +73,7 @@
       }
 
       def "system-info" [] {
-          let kernel = (uname -r)
+          let kernel = (uname)
           let mem = (free -h | lines | skip 1 | first | split row " " | where { |it| $it != "" } | get 1)
           let uptime = (uptime -p)
           let host = (hostname)
@@ -95,11 +91,6 @@
           echo $"\nTo install, run: nix-env -iA nixos.($package)"
       }
 
-      # Load zoxide for better directory navigation
-      if (which zoxide | empty?) == false {
-          zoxide init nushell | save -f ~/.cache/nushell/zoxide.nu
-          source ~/.cache/nushell/zoxide.nu
-      }
     '';
 
     extraEnv = ''
@@ -114,17 +105,6 @@
     '';
   };
 
-  # Install required packages
-  environment.systemPackages = with pkgs; [
-    # Core utilities
-    zoxide       # Better cd
-
-    # Additional tools that work well with Nushell
-    delta        # Better git diff
-    bottom       # System monitor
-    du-dust      # Better du
-    procs        # Better ps
-  ];
 
   # Configure starship prompt
   programs.starship = {
@@ -148,8 +128,4 @@
     enableNushellIntegration = true;
   };
 
-  # Set Nushell as default shell for your user
-  users.users.<your-username> = {
-    shell = pkgs.nushell;
-  };
 }

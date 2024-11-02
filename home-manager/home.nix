@@ -29,6 +29,11 @@
     pkgs.k9s
     pkgs.postman
 
+    pkgs.zoxide       
+    pkgs.delta        
+    pkgs.bottom       
+    pkgs.procs        
+    pkgs.du-dust      
     pkgs.git
 
     pkgs.ranger
