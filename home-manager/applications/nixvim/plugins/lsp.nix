@@ -7,41 +7,26 @@
           enable = true;
           installRustc = false;
           installCargo = false;
-          extraOptions = {
-            settings = {
-              "rust=analyzer" = {
-                checkOnSave = {
-                  command = "clippy";
-                  allFeatures = true;
-                };
-                procMacro = {
-                  enable = true;
-                };
-                hover = {
-                    actions = {
-                      enable = true;
-                      debug = true;
-                      gotoTypeDef = true;
-                      implementations = true;
-                    };
-                  };
-                  # Inline hints
-                  inlayHints = {
-                    bindingModeHints = {
-                      enable = true;
-                    };
-                    closureReturnTypeHints = {
-                      enable = true;
-                    };
-                    parameterHints = {
-                      enable = true;
-                    };
-                    typeHints = {
-                      enable = true;
-                    };
-                };
+          settings = {
+            # The settings need to be under "rust-analyzer"
+            "rust-analyzer" = {
+              diagnostics = {
+                enable = true;
               };
-            };
+              check = {
+                command = "clippy";
+                extraArgs = ["--all-features"];
+              };
+              # Enable all features for better analysis
+              cargo = {
+                allFeatures = true;
+                loadOutDirsFromCheck = true;
+              };
+              # Enable proc macro support
+              procMacro = {
+                enable = true;
+              };
+            };      
           };
         };
         nixd = {
@@ -71,6 +56,20 @@
         ts_ls.enable = true;
         taplo.enable = true;
         nil_ls.enable = true;
+        emmet_ls = {
+          enable = true;
+          filetypes = [
+            "html"
+            "css"
+            "scss"
+            "javascript"
+            "javascriptreact"
+            "typescript"
+            "typescriptreact"
+            "vue"
+            "svelte"
+          ];
+        };
       };
       keymaps = {
         silent = true;
@@ -107,5 +106,17 @@
     lsp-lines.enable = true; 
     lspkind.enable = true; 
     trouble.enable = true;
+
+    null-ls = {
+      enable = true;
+      sources = {
+        formatting = {
+          prettier = {
+            enable = true;
+            disableTsServerFormatter = true;
+          };
+        };
+      };
+    };
   };
 }

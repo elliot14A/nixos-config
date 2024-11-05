@@ -29,6 +29,9 @@
       autoclose.enable = true;
       lualine.enable = true;
       fidget.enable = true;
+      lsp-signature.enable = true;
+      lsp-lines.enable = true;
+      lspkind.enable = true;
       guess-indent = {
           enable = true;
           settings = {
