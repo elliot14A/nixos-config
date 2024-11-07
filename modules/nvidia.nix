@@ -6,8 +6,6 @@
     enable32Bit = true;
   };
 
-  hardware.nvidia.nvidiaPersistenced = true;
-
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
@@ -15,7 +13,6 @@
     open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
-    forceFullCompositionPipeline = true;
 
     prime = {
       sync.enable = true;

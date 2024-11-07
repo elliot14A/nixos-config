@@ -93,40 +93,18 @@
   # Enable Flatpak
   services.flatpak.enable = true;
 
+  programs.fish.enable = true;
+
   users.users.elliot = {
     isNormalUser = true;
     description = "elliot";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    shell = pkgs.nushell;
+    shell = pkgs.fish;
     packages =  [];
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  services.logind = {
-    lidSwitch = "suspend";
-    extraConfig = ''
-      HandlePowerKey=suspend
-      IdleAction=suspend
-      IdleActionSec=30min
-    '';
-  };
-
- systemd.sleep.extraConfig = ''
-    AllowSuspend=yes
-    SuspendState=mem
-  '';
-
-  systemd.services.nvidia-suspend = {
-    description = "NVIDIA suspend preparation";
-    before = [ "systemd-suspend.service" ];
-    script = ''
-      ${pkgs.linuxPackages.nvidia_x11.bin}/bin/nvidia-smi -pm 1
-    '';
-    serviceConfig.Type = "oneshot";
-    wantedBy = [ "systemd-suspend.service" ];
-  };
 
   environment.systemPackages = with pkgs; [
     neovim
@@ -145,13 +123,6 @@
     powertop
     acpi
     tlp
-    nushell
-    bat
-    eza
-    fd
-    ripgrep
-    starship
-    fzf
   ];
 
   programs.dconf.enable = true;

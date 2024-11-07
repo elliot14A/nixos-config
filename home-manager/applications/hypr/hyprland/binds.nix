@@ -39,6 +39,8 @@
     ", XF86AudioPlay, exec, playerctl play-pause"
     ", XF86AudioNext, exec, playerctl next"
     ", XF86AudioPrev, exec, playerctl previous"
+    ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
+    ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
 
     "$mod, Tab, overview:toggle" # REQUIRES Hyprspace PLUGIN
     "$mod, Escape, hyprexpo:expo, toggle" # REQUIRES hyprexpo PLUGIN
