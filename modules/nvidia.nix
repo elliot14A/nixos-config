@@ -12,8 +12,12 @@
     modesetting.enable = true;
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    powerManagement = {
+      enable = true;
+      finegrained = false;
+    };
 
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
     prime = {
       sync.enable = true;
       nvidiaBusId = "PCI:1:0:0";

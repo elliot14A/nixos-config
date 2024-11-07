@@ -23,6 +23,8 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_IN";
 
+  services.power-profiles-daemon.enable = false;
+
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_IN";
     LC_IDENTIFICATION = "en_IN";
@@ -62,6 +64,8 @@
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     WLR_RENDERER = "vulkan";
+    __NV_PRIME_RENDER_OFFLOAD = "1";
+    __VK_LAYER_NV_optimus = "NVIDIA_only";
   };
 
   services.displayManager.defaultSession = "hyprland";
@@ -103,6 +107,51 @@
     packages =  [];
   };
 
+  powerManagement = {
+    enable = true;
+    cpuFreqGovernor = "ondemand";
+  };
+
+  services.logind = {
+    lidSwitch = "suspend";
+    extraConfig = ''
+      HandlePowerKey=suspend
+      HandleLidSwitch=suspend
+      HandleLidSwitchExternalPower=suspend
+    '';
+  }; 
+
+  boot.kernelParams = [
+    "mem_sleep_default=deep"
+    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    "nvidia-drm.modeset=1"
+  ];
+
+  # Enable TLP for better power management
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+      CPU_MAX_PERF_ON_BAT = 80;
+      RUNTIME_PM_ON_AC = "auto";
+      RUNTIME_PM_ON_BAT = "auto";
+    };
+  };
+
+  systemd.services.lock-bre-suspend = {
+    description = "Lock screen before suspend";
+    before = ["sleep.target"];
+    wantedBy = ["sleep.target"];
+    serviceConfig = {
+      Environment = "WAYLAND_DISPLAY=wayland-1";
+      ExecStart = "${pkgs.hyprlock}/bin/hyprlock";
+      TimeoutSec = "infinity";
+      User = "elliot";
+    };
+  };
+
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -128,5 +177,6 @@
   programs.dconf.enable = true;
 
   system.stateVersion = "24.05"; 
+
 
 }
