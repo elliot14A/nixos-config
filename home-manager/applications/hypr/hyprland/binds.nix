@@ -9,6 +9,7 @@
     "$mod, E, togglesplit"
     "$mod, F, togglefloating"
     "$mod SHIFT, Q, exec, wlogout"
+    "$mod SHIFT, v, exec, clipman pick --tool=CUSTOM --tool-args='fuzzel -d'"
 
     # Moving windows REQUIRES hy3 PLUGIN
     "$mod, C, hy3:killactive"
@@ -42,6 +43,7 @@
     ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
     ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
 
+
     "$mod, Tab, overview:toggle" # REQUIRES Hyprspace PLUGIN
     "$mod, Escape, hyprexpo:expo, toggle" # REQUIRES hyprexpo PLUGIN
     "$mod, M, exit"
@@ -54,4 +56,5 @@
 
   wayland.windowManager.hyprland.settings.bindm =
     [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];
+
 }

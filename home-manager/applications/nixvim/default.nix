@@ -212,7 +212,17 @@
                 silent = true;
                 desc = "Close all buffers except current";
             };
-      }
+            }
+           {
+              mode = "i";
+              key = "<M-l>";  # Alt+l
+              action = "copilot#Accept()";
+              options = {
+                silent = true;
+                script = true;
+                expr = true;
+              };
+            }
       ];
 
       extraConfigLua = ''

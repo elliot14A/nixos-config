@@ -67,6 +67,10 @@
     pkgs.nixd
     pkgs.nodejs
     pkgs.go
+    pkgs.wl-clipboard
+    pkgs.clipman
+    pkgs.vlc
+    pkgs.devenv
 
     # Fonts
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
@@ -94,6 +98,5 @@
     userName = "elliot";
     userEmail = "elliot@nixos.home";
   };
-
 
 }

@@ -24,6 +24,13 @@
       web-devicons.enable = true;
       todo-comments.enable = true;
       ts-autotag.enable = true;
+      avante.enable = true;
+      copilot-vim = {
+        enable = true;
+        settings = {
+          no_tap_map = true;
+        };
+      };
       ts-context-commentstring.enable = true;
       illuminate.enable = true;
       autoclose.enable = true;
