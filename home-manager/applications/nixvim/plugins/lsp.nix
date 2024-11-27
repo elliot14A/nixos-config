@@ -1,35 +1,21 @@
-{
+{pkgs, ...}:{
   programs.nixvim.plugins = {
     lsp = {
       enable = true;
       servers = {
-        rust-analyzer = {
+        rust_analyzer = {
           installCargo = false;
           installRustc = false;
           enable = true;
           settings = {
-            cargo = {
-              loadOutDirsFromCheck = true;
-              autoreload = true;
-            };
-            procMacro = {
-              enable = true;
-            };
-            diagnostics = {
-              enable = true;
-              experimental = {
-                enable = true;
-              };
-            };
-            inlayHints = {
-              bindingModeHints.enable = true;
-              closureReturnTypeHints.enable = "always";
-              discriminantHints.enable = "always";
-              lifetimeElisionHints.enable = "always";
-              typeHints.enable = true;
-            };
+              checkOnSave = true;
+              procMacro.enable = true;
+              cargo.loadOutDirsFromCheck = true;
+              cmd = ["${pkgs.rust-analyzer}/bin/rust-analyzer"];
+              diagnostics.disabled = ["unresolved-proc-macro"];
           };
         };
+
         nixd = {
           enable = true;
           extraOptions = {

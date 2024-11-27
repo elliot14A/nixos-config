@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 let
   gruvboxDark = {
     bg0 = "#282828";

@@ -1,13 +1,13 @@
 # modules/plugins/init.nix
 {
   imports = [
-    # ./auto-session.nix
+    ./avante.nix
     ./neo-tree.nix
     ./telescope.nix
     ./comment.nix
     ./gitsigns.nix
     ./harpoon.nix
-    # ./indent-blankline.nix
+    ./indent-blankline.nix
     ./lsp.nix
     ./none-ls.nix
     ./notify.nix
@@ -24,7 +24,6 @@
       web-devicons.enable = true;
       todo-comments.enable = true;
       ts-autotag.enable = true;
-      avante.enable = true;
       copilot-vim = {
         enable = true;
         settings = {

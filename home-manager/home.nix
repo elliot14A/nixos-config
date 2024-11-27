@@ -28,6 +28,7 @@
     pkgs.playerctl
     pkgs.k9s
     pkgs.postman
+    pkgs.librewolf-wayland
 
     pkgs.zoxide       
     pkgs.delta        

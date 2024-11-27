@@ -1,7 +1,7 @@
-{
-  programs.zellij = {
-    enable = true;
-  };
+{ ... }:{
+  # programs.zellij = {
+  #   enable = true;
+  # };
 
   xdg.configFile."zellij/config.kdl".text = ''
     on_force_close "detach"

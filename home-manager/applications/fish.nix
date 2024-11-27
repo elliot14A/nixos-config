@@ -48,9 +48,9 @@
       vim = "nvim";
 
       # Zellij
-      z = "zellij";
-      za = "zellij attach";
-      znew = "zellij -s";
+      z = "~/.cargo/bin/zellij";
+      za = "z attach";
+      znew = "z -s";
 
       # GCloud
       gprod = "gcloud container clusters get-credentials prod-factly --zone asia-south1-a --project factly-prod";
