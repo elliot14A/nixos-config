@@ -41,7 +41,6 @@ in
       swaybg
       rose-pine-cursor
       pkgs.adwaita-icon-theme
-      nemo
       fuzzel
       gpu-screen-recorder
       gammastep

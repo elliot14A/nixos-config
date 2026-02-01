@@ -60,7 +60,6 @@ in
       inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
       wget
       git
-      htop
       curl
       tree
       fastfetch
@@ -72,12 +71,10 @@ in
       smartmontools
       pciutils
       file
-      dig
       oh-my-zsh
       autojump
-      compose2nix
+      lazygit
       jq
-      screen
       eza
     ];
 

@@ -99,7 +99,7 @@ in
     programs.fish.enable = true;
     environment.pathsToLink = [ "/share/fish" ];
 
-    programs.virt-manager.enable = true;
+    programs.virt-manager.enable = false;
     virtualisation = {
       libvirtd = {
         enable = true;
@@ -111,7 +111,6 @@ in
     environment.systemPackages = with pkgs; [
       wget
       git
-      htop
       curl
       tree
       eza
@@ -119,6 +118,7 @@ in
       fastfetch
       starship
       lazyssh
+      lazygit
       nixfmt
       blueman
       ffmpeg
@@ -129,8 +129,6 @@ in
       pciutils
       file
       mediawriter
-      dig
-      screen
       rustup
       cargo
       gcc
@@ -141,7 +139,6 @@ in
       ripgrep
       fd
       bat
-      delta
       fzf
       vlc
     ];
