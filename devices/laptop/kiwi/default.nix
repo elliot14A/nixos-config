@@ -15,7 +15,7 @@
   ];
 
   age.secrets.github-ssh-key = {
-    file = ../../../github-ssh-key.age;
+    file = ../../../home/secrets/keys/github-ssh-key.age;
     path = "/home/kiwi/.ssh/github_ed25519";
     owner = "kiwi";
     group = "users";
