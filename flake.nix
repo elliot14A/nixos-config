@@ -3,16 +3,10 @@
 
   inputs = {
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
     home-managerU = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
-    home-managerS = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     noctalia = {
@@ -22,7 +16,7 @@
 
     agenix = {
       url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     flatpaks = {
@@ -32,11 +26,8 @@
 
   outputs =
     {
-      self,
       nixpkgs-unstable,
-      nixpkgs-stable,
       home-managerU,
-      home-managerS,
       noctalia,
       agenix,
       flatpaks,
@@ -45,7 +36,6 @@
     let
       system = "x86_64-linux";
       libU = nixpkgs-unstable.lib;
-      libS = nixpkgs-stable.lib;
 
       mkWorkstation =
         { deviceModule, hmImports }:
@@ -55,31 +45,6 @@
           modules = [
             deviceModule
             home-managerU.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                extraSpecialArgs = { inherit inputs; };
-                users.kiwi = {
-                  imports = hmImports;
-                };
-              };
-            }
-          ];
-        };
-
-      mkServer =
-        { deviceModule, hmImports }:
-        libS.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            deviceModule
-            agenix.nixosModules.default
-            ./modules/baseline.server.nix
-            ./modules/ssh.nix
-            home-managerS.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;
