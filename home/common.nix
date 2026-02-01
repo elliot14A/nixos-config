@@ -15,9 +15,11 @@
 
   programs.git = {
     enable = true;
-    userEmail = "akshithkatkuri14@gmail.com";
-    userName = "elliot14A@nixos";
-    extraConfig = {
+    settings = {
+      user = {
+        email = "akshithkatkuri14@gmail.com";
+        name = "elliot14A@nixos";
+      };
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
     };

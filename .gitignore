@@ -1,0 +1,38 @@
+# NixOS build outputs
+result
+result-*
+
+# Age keys - never commit these!
+*.txt
+keys.txt
+age-keys.txt
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# Editor files
+.vscode/
+.idea/
+*.sublime-*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets (in case someone puts plain secrets here)
+*.secret
+*.key
+!*.age
+secrets/
+!secrets.nix
+
+# Development
+.direnv/
+.envrc.local
+
+# Hardware specific (if you want to keep them out)
+# devices/*/hardware-configuration.nix
