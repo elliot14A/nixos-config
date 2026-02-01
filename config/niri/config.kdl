@@ -154,6 +154,7 @@ binds {
     Super+Shift+Escape hotkey-overlay-title="Lock the Screen: swaylock" { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
 
     Mod+Z { spawn-sh "flatpak run app.zen_browser.zen"; }
+    Mod+Shift+B { spawn-sh "flatpak run app.zen_browser.zen"; }
     Mod+X { spawn "codium"; }
     Mod+B { spawn "/run/current-system/sw/bin/bitwarden"; }
 
