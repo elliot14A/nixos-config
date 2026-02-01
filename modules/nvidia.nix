@@ -1,29 +1,35 @@
-{ config,  ... }:
-
 {
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+
+let
+  cfg = config.workstation.nvidia;
+in
+{
+  options.workstation.nvidia = {
+    enable = lib.mkEnableOption "NVIDIA GPU support";
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    open = false;
-    nvidiaSettings = true;
-    powerManagement = {
+  config = lib.mkIf cfg.enable {
+    # Enable OpenGL
+    hardware.graphics = {
       enable = true;
-      finegrained = false;
     };
 
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-    prime = {
-      sync.enable = true;
-      nvidiaBusId = "PCI:1:0:0";
-      amdgpuBusId = "PCI:4:0:0";
+    # Load nvidia driver for Xorg and Wayland
+    services.xserver.videoDrivers = [ "nvidia" ];
+
+    hardware.nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      open = true;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
 
-    
   };
 }

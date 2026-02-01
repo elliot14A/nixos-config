@@ -1,77 +1,111 @@
 {
-  description = "System configuration";
+  description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-    home-manager = {
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+
+    home-managerU = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    # Hyprland
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hyprspace = {
-      url = "github:KZDKM/Hyprspace";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hy3 = {
-      url = "github:outfoxxed/hy3";
-      inputs.hyprland.follows = "hyprland";
+    home-managerS = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    # Zen Browser
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
-    # Nixvim
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
+    flatpaks = {
+      url = "github:in-a-dil-emma/declarative-flatpak/latest";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
-    let vars = {
+  outputs =
+    {
+      self,
+      nixpkgs-unstable,
+      nixpkgs-stable,
+      home-managerU,
+      home-managerS,
+      noctalia,
+      agenix,
+      flatpaks,
+      ...
+    }@inputs:
+    let
       system = "x86_64-linux";
-      hostname = "nixos";
-      username = "elliot";
-    };
-    in {
-      nixosConfigurations.${vars.hostname} = nixpkgs.lib.nixosSystem {
-        system = vars.system;
-        modules = [
-          ./configuration.nix
-          home-manager.nixosModules.home-manager
-          inputs.home-manager.nixosModules.default
-        ];
-        specialArgs = {
-          inherit inputs;
-          inherit vars;
-          pkgs-stable = import inputs.nixpkgs-stable {
-            system = vars.system;
-            config.allowUnfree = true;
-          };
-        };
-      };
+      libU = nixpkgs-unstable.lib;
+      libS = nixpkgs-stable.lib;
 
-      homeConfigurations.${vars.username} = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${vars.system};
-        extraSpecialArgs = {
-          inherit inputs;
-          inherit vars;
-          pkgs-stable = import inputs.nixpkgs-stable {
-            system = vars.system;
-            config.allowUnfree = true;
-          };
+      mkWorkstation =
+        { deviceModule, hmImports }:
+        libU.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            deviceModule
+            home-managerU.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                extraSpecialArgs = { inherit inputs; };
+                users.kiwi = {
+                  imports = hmImports;
+                };
+              };
+            }
+          ];
         };
-        modules = [
-          ./home-manager/home.nix
-          inputs.nixvim.homeManagerModules.nixvim
-        ];
+
+      mkServer =
+        { deviceModule, hmImports }:
+        libS.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            deviceModule
+            agenix.nixosModules.default
+            ./modules/baseline.server.nix
+            ./modules/ssh.nix
+            home-managerS.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                extraSpecialArgs = { inherit inputs; };
+                users.kiwi = {
+                  imports = hmImports;
+                };
+              };
+            }
+          ];
+        };
+    in
+    {
+      nixosConfigurations = {
+        kiwi = mkWorkstation {
+          deviceModule = ./devices/laptop/kiwi/default.nix;
+          hmImports = [
+            ./home/common.nix
+            ./home/fish.nix
+            ./home/niri.nix
+            ./home/zellij.nix
+            ./home/flatpak.nix
+          ];
+        };
       };
     };
 }

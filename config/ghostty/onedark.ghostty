@@ -1,0 +1,33 @@
+# OneDark Theme for Ghostty Terminal
+# Using built-in Atom One Dark theme
+
+# Font
+font-family = "IosevkaTerm Nerd Font,CaskaydiaCove NF,FiraCode Nerd Font,Hack Nerd Font,JetBrainsMono Nerd Font,SourceCodePro Nerd Font,SF Mono,Monaco,Inconsolata,Fira Code,Consolas,Terminus,Andale Mono,Lucida Console,liberation mono,bitstream vera sans mono,courier new,monospace"
+font-size = 14
+
+# Use built-in OneDark theme
+theme = "Atom One Dark"
+
+# Window appearance
+window-padding-x = 8
+window-padding-y = 8
+window-decoration = true
+window-theme = dark
+
+# Misc settings for professional use
+confirm-close-surface = false
+shell-integration = detect
+copy-on-select = false
+mouse-hide-while-typing = true
+
+# Window appearance
+window-padding-x = 8
+window-padding-y = 8
+window-decoration = true
+window-theme = dark
+
+# Misc settings for professional use
+confirm-close-surface = false
+shell-integration = detect
+copy-on-select = false
+mouse-hide-while-typing = true
