@@ -50,7 +50,7 @@ in
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --cmd niri-session";
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --remember-session --theme 'border=#61afef;text=#abb2bf;prompt=#61afef;time=#e5c07b;action=#5c6370;button=#61afef;container=#282c34;input=#98c379;greet=#e06c75;title=#61afef' --greeting 'Hello Elliot' --cmd niri-session";
           user = "greeter";
         };
       };
