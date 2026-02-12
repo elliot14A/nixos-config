@@ -25,6 +25,24 @@
     };
   };
 
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = false;
+    matchBlocks = {
+      "*" = {
+        # Default SSH client options you want to keep
+        serverAliveInterval = 60;
+        serverAliveCountMax = 3;
+      };
+      "github.com" = {
+        hostname = "github.com";
+        user = "git";
+        identityFile = "~/.ssh/github_ed25519";
+        identitiesOnly = true;
+      };
+    };
+  };
+
   home.packages = with pkgs; [
     opencode
   ];

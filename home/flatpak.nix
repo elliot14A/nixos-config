@@ -18,6 +18,7 @@
     };
     packages = [
       "flathub:app/io.github.zen_browser.zen//stable"
+      "flathub:app/com.google.Chrome//stable"
     ];
   };
 }

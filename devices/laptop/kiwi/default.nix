@@ -14,15 +14,19 @@
     inputs.agenix.nixosModules.default
   ];
 
-  age.secrets.github-ssh-key = {
-    file = ../../../home/secrets/keys/github-ssh-key.age;
-    path = "/home/kiwi/.ssh/github_ed25519";
-    owner = "kiwi";
-    group = "users";
-    mode = "0600";
+  age = {
+    secrets = {
+      github-ssh-key = {
+        file = ../../../home/secrets/keys/github-ssh-key.age;
+        path = "/home/kiwi/.ssh/github_ed25519";
+        owner = "kiwi";
+        group = "users";
+        mode = "0600";
+      };
+    };
+    secretsDir = "/run/agenix";
+    identityPaths = [ "/home/kiwi/.config/sops/age/keys.txt" ];
   };
-
-  age.identityPaths = [ "/home/kiwi/.config/sops/age/keys.txt" ];
 
   networking.hostName = "kiwi";
   hardware.cpu.intel.updateMicrocode = true;

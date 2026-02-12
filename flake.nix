@@ -22,6 +22,11 @@
     flatpaks = {
       url = "github:in-a-dil-emma/declarative-flatpak/latest";
     };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -31,6 +36,7 @@
       noctalia,
       agenix,
       flatpaks,
+      nixvim,
       ...
     }@inputs:
     let
@@ -69,6 +75,7 @@
             ./home/niri.nix
             ./home/zellij.nix
             ./home/flatpak.nix
+            ./home/nixvim.nix
           ];
         };
       };

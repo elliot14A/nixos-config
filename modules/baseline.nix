@@ -111,6 +111,7 @@ in
     environment.systemPackages = with pkgs; [
       wget
       git
+      blueman
       curl
       tree
       eza
